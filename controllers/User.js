@@ -31,11 +31,8 @@ const registerUser = (req,res) => {
 
 const loginUser = (req,res)=>{
     let {email,password} = req.body
-    if(!email || !password){
-        return res.json('Please enter email & password')
-    }
-    let query = 'SELECT * FROM users WHERE emailId = ? AND password = ?'
-    db.query(query, [email, password], (err, data)=> {
+    console.log(req.body)
+    db.query('SELECT * FROM users WHERE email = ? AND password = ?',[email, password], (err, data)=> {
         if(err) return res.json(err)
         return res.json(data)
     })
