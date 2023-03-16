@@ -1,4 +1,5 @@
 const User = require('../models/UserModel')
+const jwt = require('jsonwebtoken')
 
 const backendTest = (req,res) => {
     res.json('Hello this is the backend')
@@ -13,15 +14,7 @@ const getAllUsers = async(req,res) => {
 // Register User
 const registerUser = async(req,res) => {
     let { firstName , middleName, lastName, address, age, email, password, title } = req.body
-    let user = User.build({ 
-        firstName : firstName ,
-        middleName : middleName, 
-        lastName : lastName, 
-        address : address, 
-        age : age, 
-        email : email, 
-        password : password, 
-        title : title })
+    let user = User.build({ firstName , middleName, lastName, address, age, email, password, title })
     await user.save().catch(err=> {
         return res.json(err)
     })
@@ -41,7 +34,13 @@ const loginUser = async(req,res)=>{
         return res.json('Incorrect email please try again')
     if(user.password !== password)
         return res.json('Incorrect password please try again')
-    return res.json('Login successful, Hello '+user.firstName+'.')
+    const jwtToken = jwt.sign({id: user.id, email: user.email}, process.env.JWT_SECRET)
+    return res.json({message : 'Login successful, Hello '+user.firstName+'.',
+                     token: jwtToken})
 }
 
-module.exports = { backendTest, getAllUsers, loginUser, registerUser }
+const userProfile = (req,res) => {
+    res.send('Welcome to the login page')
+}
+
+module.exports = { backendTest, getAllUsers, loginUser, registerUser, userProfile }
