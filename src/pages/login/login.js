@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../style.css";
 import background from "../../assets/bg_1.jpg"
 import { Link, useNavigate } from "react-router-dom";
+import {UserContext} from '../../context';
+import { loginWithEmail } from '../../services/auth';
 
 const Login = () => {
     const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
+	const {user, setUser} = React.useContext(UserContext);
     const navigate = useNavigate();
     
 	const handleInputChange = (e) => {
@@ -21,10 +24,50 @@ const Login = () => {
     
 	const handleSubmit = () => {
 		console.log(email, password);
+		logInWithData(email,password)
 		// logInWithEmailAndPassword(email, password);
-        navigate("/started");
+        navigate("/Blank");
 
 	};
+
+	const logInWithData = async (email,password) => {
+	
+	 
+
+
+		 await loginWithEmail('simran@airlive24.com','123456').then(
+			
+
+		  data => {
+	  
+	  
+		  
+
+	  
+		   if (data.Errors ) {
+	  
+			// finalData.push("Error");
+			console.log("here in error")
+			 
+		   } else {
+			setUser(data)
+		 console.log("LOGIN",JSON.stringify(data, null,2))
+		 localStorage.setItem('token', data.access_token);
+
+
+
+			// console.log("here")
+		   }
+	  
+	  
+	  
+	  
+	  
+		   
+		  },
+		);
+	  
+		}
     
     return (
     <div style= {{ flexDirection: 'row', display:'flex', alignItems: 'center' }}>

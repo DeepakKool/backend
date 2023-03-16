@@ -1,3 +1,4 @@
+import  Sidebark  from "../sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import Sidebar2 from "../sidebar/sidebar2";
 
@@ -7,6 +8,7 @@ const AppLayout = () => {
     }}>
         <Sidebar2 />
         <Outlet />
+        <Sidebark />
     </div>;
 };
 

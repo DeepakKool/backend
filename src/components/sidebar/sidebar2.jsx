@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './sidebar.scss';
-import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar'; 
+// import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar'; 
 
 const sidebarNavItems = [
 
@@ -45,7 +45,7 @@ const Sidebar2 = () => {
     const sidebarRef = useRef();
     const indicatorRef = useRef();
     const location = useLocation();
-    const { collapseSidebar } = useProSidebar();
+    // const { collapseSidebar } = useProSidebar();
 
     useEffect(() => {
         setTimeout(() => {
@@ -53,19 +53,12 @@ const Sidebar2 = () => {
             indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
             setStepHeight(sidebarItem.clientHeight);
         }, 50);
-        collapseSidebar()
+       
     }, []);
 
-    const collapse = () => {
-        collapseSidebar()
-        console.log("here")
+  
 
-    }
-
-    useEffect(() => {
-   
-        collapse()
-    }, []);
+ 
 
     // change active index
     useEffect(() => {
@@ -74,7 +67,7 @@ const Sidebar2 = () => {
         setActiveIndex(curPath.length === 0 ? 0 : activeItem);
     }, [location]);
 
-    return   <div className='sidebar'>
+    return   <div className='sidebar' >
            
         <div className="sidebar__logo">
             EOV
