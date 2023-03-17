@@ -34,7 +34,7 @@ const loginUser = async(req,res)=>{
         return res.json('Incorrect email please try again')
     if(user.password !== password)
         return res.json('Incorrect password please try again')
-    const jwtToken = jwt.sign({id: user.id, email: user.email}, process.env.JWT_SECRET)
+    const jwtToken = jwt.sign({id: user.id, email: user.email, title: user.title}, process.env.JWT_SECRET)
     return res.json({message : 'Login successful, Hello '+user.firstName+'.',
                      token: jwtToken})
 }

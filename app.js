@@ -1,10 +1,12 @@
+//Config- should always be imported first
+const dotenv = require('dotenv')
+dotenv.config({ path: "config/config.env" })
+
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const UserRoutes = require('./routes/UserRoutes')
 const app = express()
-const dotenv = require('dotenv')
-//Config
-dotenv.config({ path: "config/config.env" })
 
 require('./auth/passport')
 

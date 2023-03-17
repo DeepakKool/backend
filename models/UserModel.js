@@ -42,7 +42,7 @@ const User = sequelize.define('User', {
         validate: {
             notEmpty: true
         }
-    }
+    },
     }, {
         timestamps: false,
         tableName: 'users',

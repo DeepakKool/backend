@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize')
 
-const sequelize = new Sequelize('timesheet', 'root', 'password', {
-    host: 'localhost',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     logging: false,
     dialect: 'mysql'
 })
@@ -12,6 +12,6 @@ try {
     console.error('Unable to connect to the database', error)
 }
 
-sequelize.sync()
+sequelize.sync({force: true})
 
 module.exports = sequelize
