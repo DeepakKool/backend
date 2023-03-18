@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('./index')
+const sequelize = require('../config/database')
 
 const User = sequelize.define('User', {
     firstName: {
@@ -7,7 +7,7 @@ const User = sequelize.define('User', {
         allowNull: false,
         validate: {
             notEmpty: true,
-            len: [5, 20]
+            len: [2, 20]
         }
     },
     middleName: DataTypes.STRING,

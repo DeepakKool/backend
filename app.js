@@ -3,14 +3,13 @@ const dotenv = require('dotenv')
 dotenv.config({ path: "config/config.env" })
 
 const express = require('express')
-const router = express.Router();
+const router = express.Router()
 const bodyParser = require('body-parser')
 const UserRoutes = require('./routes/UserRoutes')
 const cors = require('cors')
 const app = express()
-
-
-
+const User = require('./models/UserModel')
+const Attendance = require('./models/AttendanceModel')
 
 require('./auth/passport')
 
@@ -31,6 +30,9 @@ router.get("/", (req, res) => {
 
 app.use('/', UserRoutes)
 
-app.listen(8800, ()=> {
+User.sync()
+Attendance.sync({ force: true })
+
+app.listen(8800, data=> {
     console.log('Connected to backend!')
 })

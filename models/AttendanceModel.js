@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('./index')
+const sequelize = require('../config/database')
 
 const AttendanceModel = sequelize.define('Attendance', {
     projectName: {
@@ -39,13 +39,9 @@ const AttendanceModel = sequelize.define('Attendance', {
     status: {
         type: DataTypes.INTEGER
     },
-    date: {
-        type: DataTypes.DATE,
-        defaultValue: new Date().getDate()
-    }
     }, {
         timestamps: false,
-        tableName: 'project',
+        tableName: 'attendance',
     },
 )
 
