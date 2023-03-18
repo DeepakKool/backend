@@ -6,7 +6,7 @@ const express = require('express')
 const router = express.Router();
 const bodyParser = require('body-parser')
 const UserRoutes = require('./routes/UserRoutes')
-var cors = require('cors')
+const cors = require('cors')
 const app = express()
 
 
