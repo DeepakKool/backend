@@ -10,10 +10,12 @@ function ProtectedRoutes({ component: Component, ...rest }) {
     let checkAuth = localStorage.getItem("token") ? true : false;
     console.log("------------------",localStorage.getItem("token"));
 
-    return true ? <>
+    return true ? <div style={{
+      padding: '0px 0px 0px 150px'
+  }}>
       <Sidebar2 />
         <Outlet />
-        <Sidebark /></> : <Navigate to={LOGIN} />;
+        <Sidebark /></div> : <Navigate to={LOGIN} />;
 }
 
 export default ProtectedRoutes;

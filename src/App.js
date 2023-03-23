@@ -9,10 +9,21 @@ import { LOGIN, REGISTER } from "./Routes/Constants";
 import Routess from "./Routes/Routess";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ProSidebarProvider } from 'react-pro-sidebar';
+import {UserContext} from './context';
+
+
 
 const App = () => {
+    const [user, setUser] = React.useState(null);
+    
+
   return (
-    <div>
+    <UserContext.Provider
+    value={{
+   
+      setUser,
+   
+    }}>
         <Router>             
             <AuthRoutes /> 
             <ProSidebarProvider>
@@ -21,7 +32,7 @@ const App = () => {
      
             </ProSidebarProvider>
         </Router>
-    </div>
+    </UserContext.Provider>
 );
 }
 

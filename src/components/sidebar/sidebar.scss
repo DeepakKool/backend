@@ -59,7 +59,7 @@
             transform: translateX(-50%);
             transition: 0.3s ease-in-out;
             color: #494FBF;
-            transform: translateX(-50%) translateY(0px);
+            transform: translateX(-50%) translateY(0px)!important;
             height: 70px!important;
         }
     }
