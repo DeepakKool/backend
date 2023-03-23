@@ -1,4 +1,8 @@
 const User = require('../models/UserModel')
+const ErrorHandler = require('../utils/errorHandler')
+const UserLogin = require('../models/UserLoginModel')
+const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
+const Contact = require('../models/ContactModel')
 const jwt = require('jsonwebtoken')
 
 const backendTest = (req,res) => {
@@ -6,36 +10,38 @@ const backendTest = (req,res) => {
 }
 
 // Fetch all users for admin
-const getAllUsers = async(req,res) => {
+const getAllUsers = catchAsyncErrors(async(req,res,next) => {
     const users = await User.findAll()
+    if(users.length === 0)
+        return next(new ErrorHandler('No users found', 400))
     return res.status(200).json({data:users})
-}
+})
 
 // Register User
-const registerUser = async(req,res) => {
-    let { firstName , middleName, lastName, address, age, email, password, title } = req.body
-    let user = User.build({ firstName , middleName, lastName, address, age, email, password, title })
-    await user.save().catch(err=> {
-        return res.json(err)
-    })
-    return res.json(user)
-}
+const registerUser = catchAsyncErrors(async(req,res) => {
+    let { firstName , middleName, lastName, permanent_address, current_address, mobileNo, age, email, username, password } = req.body
+    await User.create({ firstName, middleName, lastName, age, username })
+    await UserLogin.create({ username, password })
+    await Contact.create({ username, permanent_address, current_address, mobileNo, email  })
+    res.status(201).json({ message : "User created successfully." })
+}) 
+
 
 // Login User
-const loginUser = async(req,res)=>{
-    let {email, password} = req.body
-    if(!email || !password){
-        return res.json('Please enter email & password')
+const loginUser = async(req,res,next)=>{
+    let {username, password} = req.body
+    if(!username || !password) {
+        return next(new ErrorHandler('Please enter username & password', 400))
     }
-    const user = await User.findOne({
-        where: { email : email }
-    })
-    if(!user)
-        return res.json('Incorrect email please try again')
-    if(user.password !== password)
+    const userLogin = await UserLogin.findByPk(username)
+    if(!userLogin) {
+        return next(new ErrorHandler('Incorrect username please try again', 401))
+
+    }
+    if(userLogin.password !== password)
         return res.json('Incorrect password please try again')
-    const jwtToken = jwt.sign({id: user.id, email: user.email, title: user.title}, process.env.JWT_SECRET)
-    return res.json({message : 'Login successful, Hello '+user.firstName+'.',
+    const jwtToken = jwt.sign({id: userLogin.id, username: userLogin.username, userType: userLogin.userType}, process.env.JWT_SECRET)
+    return res.status(201).json({message : 'Login successful, Hello '+userLogin.username+'.',
                      token: jwtToken})
 }
 

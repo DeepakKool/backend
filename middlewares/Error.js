@@ -1,26 +1,13 @@
-const ErrorHandler = require("../utils/errorHandler")
-
- module.exports = (err,req,res,next) => {
-    err.statusCode = err.statusCode || 500
+const errorMiddleware = (err,req,res,next) => {
     err.message = err.message || 'Internal server error'
-
-    //mySQL duplicate key error
-    if(err.code === 'ER_DUP_ENTRY')  {
-        err = new ErrorHandler('E-mail already exists', 400)
-    }
-
-    //Wrong jwt Error
-    if(err.name === 'JsonWebTokenError')    {
-        err = new ErrorHandler('Reset link invalid, try again', 400)
-    }
-
-    //Expired jwt Error
-    if(err.name === 'TokenExpiredError')    {
-        err = new ErrorHandler('Reset link Expired, try again', 400)
-    }
-
+    err.statusCode = err.statusCode || 500
+    if(err.name === 'SequelizeUniqueConstraintError')
+        err.message = req.body.username +' already exists. Please choose a different Username.'
+    console.log(err.path)
     res.status(err.statusCode).json({
-        success: false,
-        message: err.message
+        success : false,
+        message : err.message,
     })
 }
+
+module.exports =  errorMiddleware

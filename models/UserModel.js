@@ -6,45 +6,33 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notEmpty: true,
-            len: [2, 20]
+            len: {
+                args : [2, 20],
+                msg : "Please enter a valid name." ,
+            }
         }
     },
     middleName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    address: DataTypes.STRING,
     age: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-            notEmpty: true
-        }
-        },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
+            notEmpty: {msg : 'Please enter a valid age.'}
         }
     },
-    password: {
+    username: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
         validate: {
-            notEmpty: true,
-            len: [8, 20]
+            len: {
+                args : [5, 30],
+                msg : 'The username must be atleast 5 characters.'
+            } 
         }
-    },    
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true
-        }
-    },
+    },   
     }, {
-        timestamps: false,
         tableName: 'users',
     },
 )
