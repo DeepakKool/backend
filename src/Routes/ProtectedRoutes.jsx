@@ -11,7 +11,7 @@ function ProtectedRoutes({ component: Component, ...rest }) {
     console.log("------------------",localStorage.getItem("token"));
 
     return true ? <div style={{
-      padding: '0px 0px 0px 150px'
+      padding: '0px 100px 0px 150px',
   }}>
       <Sidebar2 />
         <Outlet />
