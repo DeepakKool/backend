@@ -17,7 +17,7 @@ const Contact = sequelize.define('UserContact', {
         type : DataTypes.STRING,
         validate: {
             len: {
-                args : [10, 10],
+                args : [10],
                 msg : 'Mobile no. should be 10 digits'
             } 
         }

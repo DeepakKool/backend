@@ -28,7 +28,7 @@ const registerUser = catchAsyncErrors(async(req,res) => {
 
 
 // Login User
-const loginUser = async(req,res,next)=>{
+const loginUser = catchAsyncErrors(async(req,res,next)=>{
     let {username, password} = req.body
     if(!username || !password) {
         return next(new ErrorHandler('Please enter username & password', 400))
@@ -43,7 +43,7 @@ const loginUser = async(req,res,next)=>{
     const jwtToken = jwt.sign({id: userLogin.id, username: userLogin.username, userType: userLogin.userType}, process.env.JWT_SECRET)
     return res.status(201).json({message : 'Login successful, Hello '+userLogin.username+'.',
                      token: jwtToken})
-}
+})
 
 const userProfile = (req,res) => {
     res.send('Welcome to the login page')
