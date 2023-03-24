@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {UserContext} from '../context';
-
+import React from "react";
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const Blank = () => {
-    const {user, setUser} = React.useContext(UserContext);
+const Dashboard = () => {
     let data = localStorage.getItem("user")
     console.log("- - - - - - - in blanks page",data)
     const percentage = 66;
    
-
     return <div>
-        
-       <p style={{fontSize: 30,fontFamily: 'Lato', }}> Good Morning Akash!</p>
+       <p> Good Morning Akash!</p>
 
         {/* <p>kkdkdkdk{user}</p>
 
@@ -129,4 +124,4 @@ const Blank = () => {
     </div>;
 };
 
-export default Blank;
+export default Dashboard;
