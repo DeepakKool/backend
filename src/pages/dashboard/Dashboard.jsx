@@ -5,7 +5,7 @@ import './Dashboard.css'
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'lato'
+    fontFamily: 'Lato'
   }
 })
 

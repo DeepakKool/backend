@@ -1,10 +1,11 @@
+import { useState } from 'react';
 // import Layout from "./components/layout/AppLayout";
 import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from './pages/login/login';
-import Dashboard from './components/user/dashboard/Dashboard'
+import Login from './components/layout/login/login';
+import Dashboard from './pages/dashboard/Dashboard'
+import Projects from './pages/projects/Projects';
 import './bootstrap.min.css'
-import { useState } from 'react';
 import AppLayout from './components/layout/AppLayout';
 
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path="/" element={<Login />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/applayout" element={<AppLayout />} />
+        <Route excat path="/projects" element={<Projects />} />
       </Routes>
     </Router>
   </div>

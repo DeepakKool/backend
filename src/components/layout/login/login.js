@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../context";
-import { loginWithEmail } from "../../services/auth";
+import { UserContext } from "../../../context";
+import { loginWithEmail } from "../../../services/auth";
 import eovlogo from './eovlogo.svg'
 import {ReactComponent as GoogleLogo} from './google.svg'
 import "./login.css";

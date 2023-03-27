@@ -33,10 +33,7 @@ const Sidebark = () => {
     
     
     >
-         <MenuItem
-   
-   
-            onClick={() => {
+         <MenuItem onClick={() => {
                 collapseSidebar();
             }}
             style={{ textAlign: "center" }}
