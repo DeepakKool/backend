@@ -30,15 +30,16 @@ const Login = () => {
 
   const logInWithData = async (email, password) => {
     await loginWithEmail().then((data) => {
-		console.log("LOGIN", JSON.stringify(data.user, null, 2));
+		// console.log("LOGIN", JSON.stringify(data.user, null, 2));
       if (data.error) {
         // finalData.push("Error");
         console.log("here in error");
       } else {
-		setUser(data.user);
-        // console.log("LOGIN", JSON.stringify(data, null, 2));
-	 		navigate("/dashboard");
+		    setUser(data.user);
         localStorage.setItem("user", data.user);	
+        console.log("LOGIN", JSON.stringify(data.user, null, 2));
+	 		navigate("/dashboard");
+        
       }
     });
   };

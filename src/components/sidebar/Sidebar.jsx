@@ -13,7 +13,7 @@ const Sidebark = () => {
     id="app"
     style={
 //add flexDirection: "row-reverse" here
-      ( { display: "flex", position: 'absolute', right: 3, top: 65})
+      ( { display: "flex", position: 'absolute', right: 3, top: 145})
     }
   >
     <Sidebar rtl={true}>

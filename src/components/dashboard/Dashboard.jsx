@@ -1,18 +1,38 @@
 import React from "react";
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
+import Grid from '@mui/material/Grid'; // Grid version 
+import { Typography } from "@mui/material";
 const Dashboard = () => {
     let data = localStorage.getItem("user")
     console.log("- - - - - - - in blanks page",data)
     const percentage = 66;
    
     return <div>
-       <p> Good Morning Akash!</p>
+      
+  
+  <Grid container spacing={12} style={{marginBottom: 20}}>
+  <Grid item xs={8} md={8}>
+    <Typography variant="h5">
+    Good Morning Akash!
+    </Typography>
+  </Grid>
 
-        {/* <p>kkdkdkdk{user}</p>
+  
+  <Grid item xs={4} md={4}>
+  <Typography variant="subtitle2" style={{marginLeft: 60, color: '#464646'}}>
+  Log in <br/>
+<span style={{marginLeft: 0}}>21/May/2021 10.24am</span>
+    </Typography>
+  </Grid>
 
-        <p>ksksksk{data?.user} </p> */}
+</Grid>
+
+
+{/* <!----------------------------------------------------------------------------------->*/}
+<div style={{backgroundColor: 'white', width: '90.5%', padding: 15}} >
+ddd
+</div> 
 
 
     <div style={{display: 'flex', flexDirection: 'row'}}>
