@@ -16,8 +16,7 @@
     font-family: Lato;
 }
 
-.MuiDataGrid-columnHeaderTitle,.css-1usso8h-MuiDataGrid-root,.css-pdct74-MuiTablePagination-selectLabel {
+.MuiDataGrid-columnHeaderTitle,.css-1usso8h-MuiDataGrid-root,.MuiDataGrid-footerContainer  {
     font-family: Lato;
-    font-weight: 1000;
     font-size: 0.875rem;
 }
