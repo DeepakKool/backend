@@ -1,9 +1,11 @@
 const User = require('../models/UserModel')
 const ErrorHandler = require('../utils/errorHandler')
+const crypto = require('crypto')
 const UserLogin = require('../models/UserLoginModel')
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
 const Contact = require('../models/ContactModel')
 const jwt = require('jsonwebtoken')
+const sendEmail = require('../utils/sendEmail')
 
 const backendTest = (req,res) => {
     res.json('Hello this is the backend')
@@ -45,8 +47,28 @@ const loginUser = catchAsyncErrors(async(req,res,next)=>{
                      token: jwtToken})
 })
 
+const forgotPassword = catchAsyncErrors(async(req,res,next) => {
+    const user = await Contact.findOne( { where: {email: req.body.email}} )
+    if(!user)
+    return next(new ErrorHandler('User not found', 404))
+    const message = 'Hello this is me Deepak Karnadhar'
+    try {
+        await sendEmail({
+            email : user.email,
+            subject : 'Deepak Karnadhar',
+            message,
+        })
+        res.status(200).json({
+            success: true,
+            message: `Email sent to ${user.email} successfully`
+        })
+    } catch(error) {
+        console.log(error)
+    }
+})
+
 const userProfile = (req,res) => {
     res.send('Welcome to the login page')
 }
 
-module.exports = { backendTest, getAllUsers, loginUser, registerUser, userProfile }
+module.exports = { backendTest, getAllUsers, loginUser, registerUser, userProfile, forgotPassword }
