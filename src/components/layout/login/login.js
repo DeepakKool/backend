@@ -44,7 +44,8 @@ const Login = () => {
     });
   };
 
-  return <div className="container main">
+  return<div className="wrapper">
+  <div className="container main">
       <div className="row">
         <div className="col-md-6 side-image">
           <img src={eovlogo} className='mt-5 pt-5 ml-3' style={{width: '135.59px'}} />
@@ -78,6 +79,7 @@ const Login = () => {
       </div>
       
     </div>
+    </div> 
 }
 
 export default Login;

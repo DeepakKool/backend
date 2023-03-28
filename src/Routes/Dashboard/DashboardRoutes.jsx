@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "../../components/dashboard/Dashboard";
+import Dashboard from "../../pages/dashboard/Dashboard";
 import Project from "../../pages/project/project";
 import ProtectedRoutes from "../ProtectedRoutes";
 

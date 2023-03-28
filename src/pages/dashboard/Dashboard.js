@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Grid from '@mui/material/Grid'; // Grid version 
 import { Typography } from "@mui/material";
-import { IoIosWarning } from 'react-icons/io ';
+import { IoIosWarning } from 'react-icons/io';
 
 const Dashboard = () => {
     let data = localStorage.getItem("user")
@@ -31,19 +31,54 @@ const Dashboard = () => {
 </Grid>
 
 
-{/* <!----------------------------------------------------------------------------------->*/}
-<div style={{backgroundColor: 'white', width: '90.5%', padding: 12}} >
 
-<p><IoIosWarning color={'red'} size={30}/> 
-<span>You have still pending yesterday’s task </span>
-<span>(Ticket 24, Ticket 12) </span>
-<span>If you finished update worksheet</span>
+
+{/* <!----------------------------------------------------------------------------------->*/}
+<div style={{backgroundColor: 'white', width: '90.5%', padding: 0, display: 'flex', flexDirection: 'row',}} >
+
+<IoIosWarning color={'red'} size={30} style={{marginTop: 8, marginLeft: 10}}/> 
+<p > 
+
+<span style={{fontSize:16, color: '#464646', fontFamily: 'Lato'}}>You have still pending yesterday’s task </span>
+<span style={{fontSize:16, color: '#EC5959', fontFamily: 'Lato'}}>(Ticket 24, Ticket 12) </span>
+<span style={{fontSize:16, color: '#C9C9C9', fontFamily: 'Lato'}}>If you finished update worksheet</span>
 
 </p>
 </div> 
 
 
+
+<div style={{borderBottom: '2px solid #0000001A', marginTop: 20, marginBottom: 20,width: '90.5%'}}>
+  
+  </div>
+
+
+  <Grid container  style={{marginBottom: 20,}}>
+  <Grid item xs={3} md={3} style={{background: 'white', width: '100%'}}>
     <div style={{display: 'flex', flexDirection: 'row'}}>
+
+  <p>ss</p>
+  <p>ddd</p>
+
+    </div>
+
+
+  </Grid>
+
+  
+  <Grid item xs={3} md={3}>
+s
+  </Grid>
+
+    
+  <Grid item xs={6} md={6}>
+s
+  </Grid>
+
+</Grid>
+
+
+    {/* <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{flex: 4, width: 20, height: 130, backgroundColor: '#E5E5E5'}}>
             
         <div style={{ width: 230, height: 130, backgroundColor: '#E5E5E5'}}>
@@ -146,7 +181,7 @@ const Dashboard = () => {
         </div>
         </div>
 
-    </div>
+    </div> */}
 
 
     </div>;
