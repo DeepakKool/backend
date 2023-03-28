@@ -1,0 +1,26 @@
+.container {
+    height: 80vh;
+}
+
+.MuiDataGrid-iconSeparator,.MuiDataGrid-menuIcon,.MuiDataGrid-columnSeparator,.MuiDataGrid-columnSeparator,.MuiDataGrid-columnHeader{
+}
+
+.MuiDataGrid-cell {
+    background-color: #FFFFFF;
+    padding: 20px auto;
+}
+
+.MuiDataGrid-row {
+    margin: 3px 0;
+    padding: 20px auto;
+    border-radius: 100px;
+}
+
+.MuiDataGrid-cellContent {
+    font-family: Lato;
+    text-align: center;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+    align-items: center;
+}

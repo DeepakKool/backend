@@ -4,7 +4,7 @@ import 'boxicons/css/boxicons.min.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from './components/layout/login/login';
 import Dashboard from './pages/dashboard/Dashboard'
-import Projects from './pages/projects/Projects';
+import Profile from './pages/profile/Profile';
 import './bootstrap.min.css'
 import AppLayout from './components/layout/AppLayout';
 
@@ -21,7 +21,7 @@ const App = () => {
         <Route exact path="/" element={<Login />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/applayout" element={<AppLayout />} />
-        <Route excat path="/projects" element={<Projects />} />
+        <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   </div>
