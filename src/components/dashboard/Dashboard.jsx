@@ -3,6 +3,8 @@ import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Grid from '@mui/material/Grid'; // Grid version 
 import { Typography } from "@mui/material";
+import { IoIosWarning } from 'react-icons/io ';
+
 const Dashboard = () => {
     let data = localStorage.getItem("user")
     console.log("- - - - - - - in blanks page",data)
@@ -30,8 +32,14 @@ const Dashboard = () => {
 
 
 {/* <!----------------------------------------------------------------------------------->*/}
-<div style={{backgroundColor: 'white', width: '90.5%', padding: 15}} >
-ddd
+<div style={{backgroundColor: 'white', width: '90.5%', padding: 12}} >
+
+<p><IoIosWarning color={'red'} size={30}/> 
+<span>You have still pending yesterday’s task </span>
+<span>(Ticket 24, Ticket 12) </span>
+<span>If you finished update worksheet</span>
+
+</p>
 </div> 
 
 
