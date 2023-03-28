@@ -15,14 +15,14 @@ const sidebarNavItems = [
     {
         display: 'Dashboard',
         icon: <i class='bx bx-layout bx-rotate-270' ></i>,
-        to: '/started',
-        section: 'started'
+        to: '/dashboard',
+        section: 'Dashboard'
     },
     {
-        display: 'Worksheet',
+        display: 'Project',
         icon:<i class='bx bx-folder-plus ' ></i>,
-        to: '/calendar',
-        section: 'calendar'
+        to: '/project',
+        section: 'Project'
     },
     {
         display: 'Teams',

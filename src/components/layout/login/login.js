@@ -30,20 +30,22 @@ const Login = () => {
 
   const logInWithData = async (email, password) => {
     await loginWithEmail().then((data) => {
-		console.log("LOGIN", JSON.stringify(data.user, null, 2));
+		// console.log("LOGIN", JSON.stringify(data.user, null, 2));
       if (data.error) {
         // finalData.push("Error");
         console.log("here in error");
       } else {
-		setUser(data.user);
-        // console.log("LOGIN", JSON.stringify(data, null, 2));
-	 		navigate("/dashboard");
+		    setUser(data.user);
         localStorage.setItem("user", data.user);	
+        console.log("LOGIN", JSON.stringify(data.user, null, 2));
+	 		navigate("/dashboard");
+        
       }
     });
   };
 
-  return <div className="container main">
+  return<div className="wrapper">
+  <div className="container main">
       <div className="row">
         <div className="col-md-6 side-image">
           <img src={eovlogo} className='mt-5 pt-5 ml-3' style={{width: '135.59px'}} />
@@ -77,6 +79,7 @@ const Login = () => {
       </div>
       
     </div>
+    </div> 
 }
 
 export default Login;
