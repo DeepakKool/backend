@@ -2,9 +2,6 @@
     height: 80vh;
 }
 
-.MuiDataGrid-iconSeparator,.MuiDataGrid-menuIcon,.MuiDataGrid-columnSeparator,.MuiDataGrid-columnSeparator,.MuiDataGrid-columnHeader{
-}
-
 .MuiDataGrid-cell {
     background-color: #FFFFFF;
     padding: 20px auto;
@@ -13,14 +10,14 @@
 .MuiDataGrid-row {
     margin: 3px 0;
     padding: 20px auto;
-    border-radius: 100px;
 }
 
 .MuiDataGrid-cellContent {
     font-family: Lato;
-    text-align: center;
 }
 
-.MuiDataGrid-columnHeaderTitle {
-    align-items: center;
+.MuiDataGrid-columnHeaderTitle,.css-1usso8h-MuiDataGrid-root,.css-pdct74-MuiTablePagination-selectLabel {
+    font-family: Lato;
+    font-weight: 1000;
+    font-size: 0.875rem;
 }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Paper } from '@mui/material';
 import './Profile.css'
 
 const userProjects = [
@@ -86,7 +85,7 @@ function Profile() {
         status : row.status
     }))
     return <div className='container bg-secondary'>
-            <DataGrid rows={rows} columns={columns}  />
+            <DataGrid rows={rows} columns={columns} />
     </div>
 }
 
