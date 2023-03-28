@@ -84,8 +84,16 @@ function Profile() {
         break : row.break,
         status : row.status
     }))
-    return <div className='container bg-secondary'>
+    return <div className='container'>
+        <div className='row d-flex flex-row'>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>No of</h4> Projects Worked </div><h1 className='d-inline-block align-self-end'> 15</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>No of</h4> Teams Worked </div><h1 className='d-inline-block'> 07</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>Performance</h4> Rating </div><h1 className='d-inline-block'> 84%</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>Total</h4> Attendance Progress </div><h1 className='d-inline-block'> 07</h1></div>
+        </div>
+        <div className='row bg-secondary'>
             <DataGrid rows={rows} columns={columns} />
+        </div>
     </div>
 }
 

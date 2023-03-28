@@ -24,6 +24,7 @@ const App = () => {
       setUser,
    
     }}>
+        <div className='wrapper'>
         <Router>             
             <AuthRoutes /> 
             <ProSidebarProvider>
@@ -32,6 +33,7 @@ const App = () => {
      
             </ProSidebarProvider>
         </Router>
+        </div>
     </UserContext.Provider>
 );
 }
