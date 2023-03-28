@@ -33,7 +33,7 @@ const sidebarNavItems = [
     {
         display: 'Profile',
         icon:<i class='bx bx-spreadsheet' ></i>,
-        to: '/order',
+        to: '/profile',
         section: 'order'
     },
   
