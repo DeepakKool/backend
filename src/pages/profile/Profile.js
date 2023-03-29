@@ -61,12 +61,12 @@ const userProjects = [
 
 function Profile() {
     const columns = [
-        { field: 'date', headerName: 'Date', flex: 2 },
-        { field: 'project', headerName: 'Project', flex: 2 },
-        { field: 'team', headerName: 'Team', flex: 1 },
-        { field: 'workingHours', headerName: 'Working Hours', flex: 2 },
-        { field: 'break', headerName: 'Break', flex: 1 },
-        { field: 'status', headerName: 'Status', flex:2 },
+        { field: 'date', headerName: 'Date', flex: 2, minHeight: '10px' },
+        { field: 'project', headerName: 'Project', flex: 2, minHeight: '4vh' },
+        { field: 'team', headerName: 'Team', flex: 1, minHeight: '4vh' },
+        { field: 'workingHours', headerName: 'Working Hours', flex: 2, minHeight: '4vh' },
+        { field: 'break', headerName: 'Break', flex: 1, minHeight: '4vh' },
+        { field: 'status', headerName: 'Status', flex:2, minHeight: '4vh' },
     ]
     const [data, setData] = useState([])
     function getUserProjects() {
@@ -92,7 +92,7 @@ function Profile() {
             <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>Total</h4> Attendance Progress </div><h1 className='d-inline-block'> 07</h1></div>
         </div>
         <div className='row bg-secondary'>
-            <DataGrid rows={rows} columns={columns} />
+            <DataGrid autoHeight rows={rows} columns={columns} />
         </div>
     </div>
 }
