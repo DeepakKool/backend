@@ -10,7 +10,7 @@ function ProtectedRoutes({ component: Component, ...rest }) {
   let checkAuth = localStorage.getItem("token") ? true : false;
   console.log("------------------",localStorage.getItem("token"));
 
-  return true ? <div style={{padding: '40px 150px 0px 150px'}}>
+  return true ? <div className="bg-secondary" style={{padding: '40px 150px 0px 150px'}}>
     <Sidebar2 />
     <SearchBar />
     <Outlet />

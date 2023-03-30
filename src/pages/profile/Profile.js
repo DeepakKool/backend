@@ -61,12 +61,12 @@ const userProjects = [
 
 function Profile() {
     const columns = [
-        { field: 'date', headerName: 'Date', flex: 2, minHeight: '10px' },
-        { field: 'project', headerName: 'Project', flex: 2, minHeight: '4vh' },
-        { field: 'team', headerName: 'Team', flex: 1, minHeight: '4vh' },
-        { field: 'workingHours', headerName: 'Working Hours', flex: 2, minHeight: '4vh' },
-        { field: 'break', headerName: 'Break', flex: 1, minHeight: '4vh' },
-        { field: 'status', headerName: 'Status', flex:2, minHeight: '4vh' },
+        { field: 'date', headerName: 'Date', flex: 2, },
+        { field: 'project', headerName: 'Project', flex: 2,  },
+        { field: 'team', headerName: 'Team', flex: 1, },
+        { field: 'workingHours', headerName: 'Working Hours', flex: 2, },
+        { field: 'break', headerName: 'Break', flex: 1,  },
+        { field: 'status', headerName: 'Status', flex:2, },
     ]
     const [data, setData] = useState([])
     function getUserProjects() {
@@ -86,13 +86,13 @@ function Profile() {
     }))
     return <div className='container'>
         <div className='row d-flex flex-row'>
-            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>No of</h4> Projects Worked </div><h1 className='d-inline-block align-self-end'> 15</h1></div>
-            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>No of</h4> Teams Worked </div><h1 className='d-inline-block'> 07</h1></div>
-            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>Performance</h4> Rating </div><h1 className='d-inline-block'> 84%</h1></div>
-            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h4>Total</h4> Attendance Progress </div><h1 className='d-inline-block'> 07</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h5>No of</h5> Projects Worked </div><h1 className='d-inline-block align-self-end'> 15</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h5>No of</h5> Teams Worked </div><h1 className='d-inline-block'> 07</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h5>Performance</h5> Rating </div><h1 className='d-inline-block'> 84%</h1></div>
+            <div className='card d-inline-block p-3 flex-grow-1'><div className='d-inline-block'><h5>Total</h5> Attendance Progress </div><h1 className='d-inline-block'> 07</h1></div>
         </div>
         <div className='row bg-secondary'>
-            <DataGrid autoHeight rows={rows} columns={columns} />
+            <DataGrid autoHeight={true} rows={rows} columns={columns} />
         </div>
     </div>
 }

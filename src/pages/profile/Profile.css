@@ -4,12 +4,6 @@
 
 .MuiDataGrid-cell {
     background-color: #FFFFFF;
-    padding: 20px auto;
-}
-
-.MuiDataGrid-row {
-    margin: 3px 0;
-    padding: 20px auto;
 }
 
 .MuiDataGrid-cellContent {
@@ -18,5 +12,4 @@
 
 .MuiDataGrid-columnHeaderTitle,.css-1usso8h-MuiDataGrid-root,.MuiDataGrid-footerContainer  {
     font-family: Lato;
-    font-size: 0.875rem;
 }
