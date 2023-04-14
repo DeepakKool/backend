@@ -1,9 +1,11 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
-const { backendTest, loginUser, getAllUsers, registerUser, userProfile, forgotPassword } = require('../controllers/UserController')
+const { backendTest, loginUser, getAllUsers, registerUser, userProfile, forgotPassword, uploadFile, deleteFile } = require('../controllers/UserController')
 
-router.route('').get(backendTest)
+router.route('/').get(backendTest)
+
+router.route('/upload').post(uploadFile).delete(deleteFile)
 
 router.route('/login').post(loginUser)
 

@@ -1,14 +1,18 @@
+const fs = require('fs')
 const User = require('../models/UserModel')
 const ErrorHandler = require('../utils/errorHandler')
+const formidable = require('formidable')
 const crypto = require('crypto')
 const UserLogin = require('../models/UserLoginModel')
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
 const Contact = require('../models/ContactModel')
 const jwt = require('jsonwebtoken')
 const sendEmail = require('../utils/sendEmail')
+const { join } = require('path')
+
 
 const backendTest = (req,res) => {
-    res.json('Hello this is the backend')
+    res.send(`Hello world!`)
 }
 
 // Fetch all users for admin
@@ -28,6 +32,66 @@ const registerUser = catchAsyncErrors(async(req,res) => {
     res.status(201).json({ message : "User created successfully." })
 }) 
 
+// Returns true if successful or false otherwise
+async function checkCreateUploadsFolder (uploadsFolder) {
+	try {
+		fs.statAsync(uploadsFolder)
+	} catch (e) {
+		if (e && e.code == 'ENOENT') {
+			console.log('The uploads folder doesn\'t exist, creating a new one...')
+			try {
+				fs.mkdirSync(uploadsFolder)
+			} catch (err) {
+				console.log('Error creating the uploads folder 1', err)
+				return false
+			}
+		} else {
+			console.log('Error reading the folder')
+			return false
+		}
+	}
+	return true
+}
+
+// Returns true or false depending on whether the file is an accepted type
+const isFileValid = (file) => {
+    const type = file.type.split("/").pop();
+    const validTypes = ["jpg", "jpeg", "png", "pdf"];
+    if (validTypes.indexOf(type) === -1) {
+      return false;
+    }
+    return true;
+};
+
+// Upload file
+const uploadFile = catchAsyncErrors(async(req,res) => {
+    console.log('Function started')
+    
+    const form = formidable({ multiples: true, uploadDir: __dirname });
+    res.json('File uploaded and moved!');
+    form.parse(req, async (err, fields, files) => {
+        if (err) {
+            res.writeHead(err.httpCode || 400, { 'Content-Type': 'text/plain' });
+            res.end(String(err));
+            return;
+        }
+        const { filepath, originalFilename, newFilename, size, mimetype } = files.files;
+        console.log(filepath);
+        var oldPath = filepath;
+        var newPath = __dirname + '/' + originalFilename //change path then it will work
+        // const fileName = encodeURIComponent(originalFilename.replace(/&. *;+/g, '-'))
+        fs.rename(oldPath, newPath, function (err) {
+            if (err) throw err;
+            res.write('File uploaded and moved!');
+            res.end();
+        });
+    })
+})
+
+const deleteFile = catchAsyncErrors(async(req,res) => {
+    console.log(`File deleted`)
+    return res.status(200).json({ result: true, msg: 'file deleted' });
+})
 
 // Login User
 const loginUser = catchAsyncErrors(async(req,res,next)=>{
@@ -38,7 +102,6 @@ const loginUser = catchAsyncErrors(async(req,res,next)=>{
     const userLogin = await UserLogin.findByPk(username)
     if(!userLogin) {
         return next(new ErrorHandler('Incorrect username please try again', 401))
-
     }
     if(userLogin.password !== password)
         return res.json('Incorrect password please try again')
@@ -71,4 +134,4 @@ const userProfile = (req,res) => {
     res.send('Welcome to the login page')
 }
 
-module.exports = { backendTest, getAllUsers, loginUser, registerUser, userProfile, forgotPassword }
+module.exports = { backendTest, getAllUsers, loginUser, registerUser, userProfile, forgotPassword, uploadFile, deleteFile }
