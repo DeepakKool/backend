@@ -1,36 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react'
+import axios from 'axios'
 import './FileUpload.scss'
 
 function FileUpload() {
-  function onFileUpload(event) {
-    let selectedFile = event.target.files
-    console.log(selectedFile)
+  const formData = new FormData()
+  const onFileUpload = async(event) => {
+    const selectedFile = event.target.files
+    console.log(selectedFile.length)
     // Create an object of formData
-    const formData = new FormData()
     // Update the formData object
-    formData.append( "files", selectedFile[0], selectedFile[0].name )
-    // Details of the uploaded file
-    for(var pair of formData.entries()) {
-      console.log(pair[0]+', '+pair[1]);
-    }
-    // Request made to the backend api
+    for(let i = 0; i < selectedFile.length ; i++)
+    formData.append( "files", selectedFile[i], selectedFile[i].name )
     // Send formData object
-    axios.post("http://localhost:8800/upload", formData)
+    axios.post("http://localhost:8800/upload", formData).then(res=>{ 
+    console.log('Response :', res)  }).catch(err=> console.log('Upload failed',err))
   }
   return <div className="file-card">
-
-      <div className="file-inputs">
-          <input type="file" onChange={onFileUpload} />
-          <button>
+          <div className="file-inputs">
+            <input type="file" multiple onChange={onFileUpload} />
+            <button>
               <i>
                   <FontAwesomeIcon icon={faPlus} />
               </i>
               Upload
-          </button>
-      </div>
+            </button>
+          </div>
 
       <p className="main">Supported files</p>
       <p className="info">PDF, JPG, PNG</p>
